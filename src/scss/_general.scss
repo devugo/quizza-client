@@ -1,0 +1,53 @@
+
+.short-underline {
+    position: relative;
+    @include transition-ease;
+
+    &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 40px;
+        height: 5px;
+        width: 50px;
+        background-color: $primary-color;
+    }
+
+}
+body {
+    background-color: $light-gray;
+}
+
+.box-shadow {
+    box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $header-text-color;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: $playfair;
+}
+
+h2 {
+    font-size: 24px;
+    font-family: $montserrat;
+}
+
+h3 {
+    font-size: 16px;
+    font-family: $montserrat;
+}
+
+p{
+    font-size: 15px;
+    color: $paragraph-text-color;
+    font-family: $opensans;
+}

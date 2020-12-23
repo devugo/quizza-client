@@ -1,0 +1,15 @@
+@import '../../scss/index.scss';
+
+.ant-modal-close-x{
+    span:first-child {
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 575px){
+    .dialog-footer {
+        button {
+            width: 120px !important;
+        }
+    }
+}

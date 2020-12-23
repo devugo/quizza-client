@@ -1,0 +1,24 @@
+@import '../../scss/index';
+
+.quizza-btn {
+    background-color: $primary-color;
+    color: $white;
+    border-radius: 100px;
+    width: 100px;
+    border: 1px solid $primary-color;
+    height: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include transition-ease;
+
+    &:focus{
+        // outline: none !important;
+        outline-color: transparent;
+    }
+
+    &:hover {
+        background-color: #F15C7F;
+    }
+}

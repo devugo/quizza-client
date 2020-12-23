@@ -1,0 +1,12 @@
+@import '../../scss/index';
+
+.shopmate-textarea {
+    height: 150px;
+    border: 1px solid $gray;
+    border-radius: 6px;
+    @include transition-ease;
+
+    &:focus {
+        outline-color: #b1b1b1;
+    }
+}
