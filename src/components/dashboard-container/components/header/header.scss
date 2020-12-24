@@ -7,30 +7,144 @@
 
     &__content {
         height: 100%;
-        margin: 0 40px;
+        margin: 0 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         .right {
-            background-color: red;
             display: flex;
             align-items: center;
 
+
+            .input-control {
+                position: relative;
+                input {
+                    width: 200px;
+                    background-color: $bg-color;
+                    display: none;
+                }
+
+                i {
+                    position: absolute;
+                    right: 10px;
+                    top: 9px;
+                    cursor: pointer;
+                    display: none;
+                }
+            }
+           
             .profile {
-                margin-left: 50px;
+                margin-left: 20px;
                 display: flex;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
 
                 img {
                     border-radius: 50%;
                 }
 
                 .name {
-                    margin-left: 10px;
+                    display: none;
+                }
+
+                .dropdown {
+                    position: absolute;
+                    top: 60px;
+                    width: 150px;
+                    background-color: $white;
+                    display: none;
+                    right: 0px;
+
+                    &.show {
+                        display: block;
+                    }
+
+                    ul {
+                        list-style: none;
+                        padding: 5px 0;
+
+                        li {
+                            height: 30px;
+
+                            a {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-decoration: none;
+
+                                &:hover {
+                                    background-color: $primary-color;
+                                    color: $white;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+}
 
+@include media-md{
+    .dashboard-header {
+        &__content {
+            margin: 0 40px;
+    
+            .right {
+    
+                .input-control {
+                    input {
+                        width: 300px;
+                        display: block;
 
+                        &:focus {
+                            width: 350px;
+                        }
+                    }
+
+                    i {
+                        display: block;
+                    }
+                }
+
+                .profile {
+                    margin-left: 50px;
+    
+                    .name {
+                        display: block;
+                        margin-left: 10px;
+                        width: 200px;
+                    }
+                    .dropdown {
+                        right: inherit;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-lg{
+    .dashboard-header {
+        &__content {
+    
+            .right {
+    
+                .input-control {
+                    input {
+                        width: 400px;
+
+                        &:focus {
+                            width: 450px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
