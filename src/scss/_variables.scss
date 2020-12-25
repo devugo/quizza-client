@@ -6,24 +6,20 @@ $playfair: 'Playfair Display', serif;
 $montserrat: 'Montserrat', sans-serif;
 $opensans: 'Open Sans', sans-serif;
 
-$bg-color: #f0f7ff;
+$bg-color: #fafbff;
 $white: #fff;
-$primary-color: #f62f5e;
+$primary-color: #1f4af2;
+$primary-color-light: #edf1ff;
 $secondary-color: #6eb2fb;
 $tertiary-color: #fcc46a;
-$reddish: #f3511f;
-$yellow: #effc90;
-$green: #00d3ca;
-$lemon-green: #0de66b;
-$purple: #8b1ff0;
 
 $header-text-color: #2e2e2e;
+$black: #2e2e2e;
 $paragraph-text-color: #6c6c6c;
 
 $gray: #b4b4b4;
 $light-gray: #f7f7f7;
 $hover-color: #f3efef;
-$white: #fff;
 
 @mixin transition-ease {
     transition: all 0.5s ease-in-out;

@@ -2,4 +2,8 @@
 
 .dashboard-container {
     background-color: $bg-color;
+
+    .dashboard-main {
+        display: flex;
+    }
 }

@@ -12,6 +12,16 @@
         justify-content: space-between;
         align-items: center;
 
+        .left {
+            display: flex;
+            align-items: center;
+
+            .hamburger {
+                margin-left: 90px;
+                cursor: pointer;
+            }
+        }
+
         .right {
             display: flex;
             align-items: center;

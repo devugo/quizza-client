@@ -1,0 +1,104 @@
+@import '../../../../scss/variables';
+
+.dashboard-sidebar {
+    width: 70px;
+    background-color: $white;
+    // padding: 20px 0;
+    overflow: hidden;
+    @include transition-ease;
+
+    &.open {
+        width: 250px;
+    }
+
+    &__content {
+        .user-profile {
+            border-bottom: 2px solid $gray;
+            padding: 10px 0;
+            &.open {
+                padding: 20px;
+                img {
+                    width: 100px;
+                    height: 100px;
+                }
+                p {
+                    display: block;
+                }
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                @include transition-ease;
+            }
+            p {
+                display: none;
+                @include transition-ease;
+            }
+           
+        }
+
+        .nav {
+            padding: 20px 0;
+            ul {
+                list-style: none;;
+                
+                li {
+                    height: 60px;
+                    
+
+                    a {
+                        text-decoration: none;
+                        color: $gray;
+                        height: 100%;
+                        display: block;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        justify-content: center;
+                        @include transition-ease;
+
+                        span {
+                            font-size: 12px;
+                            @include transition-ease;
+                        }
+
+                        &.open {
+                            padding: 0 40px;
+                            flex-direction: row;
+                            justify-content: flex-start;
+                        
+                            i {
+                                margin-right: 20px;
+                            }
+
+                            span {
+                                font-size: 16px;
+                            }
+                        }
+
+                        &.active {
+                            color: $black;
+                            border-right: 4px solid $primary-color;
+                            font-weight: bold;
+
+                            i {
+                                color: $primary-color;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: $primary-color-light;
+                        }
+
+
+                        i {
+                            font-size: 22px;
+                            @include transition-ease;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
