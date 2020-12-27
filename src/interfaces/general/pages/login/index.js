@@ -29,6 +29,7 @@ const Login = () => {
             setLoader(false);
         }catch (error){
             Message('error', error.response.data.error, 5);
+            setLoader(false);
             // console.log(error.response);
             // console.log(error.message);
         }
@@ -43,6 +44,7 @@ const Login = () => {
 
     //  On Failure to login with google
     const onFailure = useCallback((res) => {
+        console.log(res)
         Message('warning', 'There was an error signing in with Google', 5);
     }, []);
 
@@ -68,15 +70,15 @@ const Login = () => {
         setTimeout(refreshToken, refreshTiming);
     }
 
-    const verifyGoogle = async (token, id) => {
+    const verifyGoogle = useCallback(async (token, id) => {
         try {
-            await AuthActions.verifyGoogleAuth(token, id);
+            await dispatch(AuthActions.verifyGoogleAuth(token, id));
             Message('success', 'Login successful', 5);
         }catch (error){
             console.log(error.response);
             Message('warning', 'There wan an error verifying user', 5);
         }
-    }
+    }, []);
 
     return (
         <div className="login">
@@ -103,6 +105,7 @@ const Login = () => {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        setLoader(true);
                         console.log(values);
                         processLogin(values);
                         // setTimeout(() => {
@@ -147,6 +150,8 @@ const Login = () => {
                                 clickAction={()=>{}}
                                 text="SIGN IN"
                                 classnames="btn-gradient-primary"
+                                spin={loader}
+                                disabled={loader}
                             />
                             <div className="form-input bottom">
                                 <label>
