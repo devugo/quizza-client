@@ -22,7 +22,6 @@ export const verifyGoogleAuth = async (token, id) => {
                 }
             });
             let resData = await response.data;
-            console.log(response);
 
             dispatch({
                 type: LOGIN_USER,
@@ -45,7 +44,6 @@ export const login = (formData) => {
                 },
                 data: formData
             });
-            console.log(response);
             let resData = await response.data;
           
             

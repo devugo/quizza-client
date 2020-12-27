@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
 
 import { Input } from '../../../input';
@@ -16,7 +16,9 @@ import './header.scss';
 export const Header = ({
     setOpenSidebar
 }) => {
+    const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
+
     const [ dropdown, setDropdown ] = useState(false);
 
     const logout = useCallback(async () => {
@@ -62,8 +64,8 @@ export const Header = ({
                         />
                         <img className="profile-img ml-1" src={ProfileImg} width="30" height="30" alt="profile" />
                         <div className="name">
-                            <p className="title">Admin</p>
-                            <p className="fullname">Ezenwankwo Ugochukwu</p>
+                            <p className="title">{ auth.data.role === 1 ? 'Admin' : 'User'}</p>
+                            <p className="fullname">{ auth.data.name }</p>
                         </div>
 
                         <div className={`dropdown ${dropdown ? 'show' : ''}`}>
