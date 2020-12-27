@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
 
 import { Input } from '../../../input';
 import { FaIcon } from '../../../fa-icon';
@@ -6,12 +7,27 @@ import ProfileImg from '../../../../images/default.png';
 import LogoText from '../../../../images/logo-text.svg';
 import Logo from '../../../../images/logo.svg';
 import Hamburger from '../../../../images/hamburger.svg';
+
+import * as AuthActions from '../../../../store/actions/auth';
+import { Message } from '../../../../components/message'
+
 import './header.scss';
 
 export const Header = ({
     setOpenSidebar
 }) => {
+    const dispatch = useDispatch();
     const [ dropdown, setDropdown ] = useState(false);
+
+    const logout = useCallback(async () => {
+        try {
+            await dispatch(AuthActions.logout());
+            Message('success', 'Logout successful', 5);
+            
+        }catch (error){
+            Message('error', 'There was an error signing out', 5);
+        }
+    }, []);
 
     useEffect(() => {
         window.onclick = function(event) {
@@ -54,6 +70,7 @@ export const Header = ({
                             <ul>
                                 <li><a href="#">Profile</a></li>
                                 <li><a href="#">Results</a></li>
+                                <li><a href="" onClick={logout}>Logout</a></li>
                             </ul>
                         </div>
                     </div>

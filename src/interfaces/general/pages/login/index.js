@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router';
 import { GoogleLogin } from 'react-google-login';
 
 import { Input } from '../../../../components/input';
@@ -17,16 +18,17 @@ import * as AuthActions from '../../../../store/actions/auth';
 import './login.scss';
 
 const Login = () => {
-    const [ loader, setLoader ] = useState(false);
-
+    const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
+
+    const [ loader, setLoader ] = useState(false);
     
     const processLogin = useCallback(async (formData) => {
         
         try {
             await dispatch(AuthActions.login(formData));
             Message('success', 'Login successful', 5);
-            setLoader(false);
+            // setLoader(false);
         }catch (error){
             Message('error', error.response.data.error, 5);
             setLoader(false);
@@ -37,7 +39,7 @@ const Login = () => {
 
     //  On successfully siginng in with Google
     const onSuccess = useCallback((res) => {
-        console.log('[Login Success] currentUser:', res);
+        // console.log('[Login Success] currentUser:', res);
         refreshTokenSetup(res);
         verifyGoogle(res.accessToken, res.googleId);
     }, []);
@@ -80,13 +82,22 @@ const Login = () => {
         }
     }, []);
 
+    if(auth && auth.loggedIn){
+        console.log(auth)
+        if(auth.data.role === 1){
+            return <Redirect to='/admin' />
+        }else if(auth.data.role === 2){
+            return <Redirect to='/user' />
+        }
+    }
+
     return (
         <div className="login">
             <div className="quizza-card">
                 <div className="logo">
                     <img src={LogoText} alt="logo-text" />
                 </div>
-                <p className="mt-3 mb-2">Sign in to continue!</p>
+                <p className="mt-3 mb-2"><strong>Sign in to continue!</strong></p>
 
                 <Formik
                     initialValues={{ email: '', password: '', remember: false }}

@@ -5,6 +5,7 @@ import * as LocalStore from '../../helpers/functions/localStore';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const KEEP_USER_LOGGED_IN = 'KEEP_USER_LOGGED_IN';
 
 export const verifyGoogleAuth = async (token, id) => {
     return async (dispatch, getState) => {
@@ -61,7 +62,6 @@ export const login = (formData) => {
 export const keepUserLoggedIn = () => {
     let getUserFromocalStore = LocalStore.get('QUIZZAUSER');
     if(getUserFromocalStore){
-        
         getUserFromocalStore = JSON.parse(getUserFromocalStore);
         return async (dispatch, getState) => {
             try{
@@ -90,7 +90,7 @@ export const keepUserLoggedIn = () => {
                 // }
 
                 dispatch({
-                    type: LOGIN_USER,
+                    type: KEEP_USER_LOGGED_IN,
                     data: getUserFromocalStore
                 });
             }catch(err){

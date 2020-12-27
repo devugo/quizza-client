@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,14 +10,15 @@ function NotAuth({ component: Component, ...rest }) {
     const dispatch = useDispatch();
     const auth = useSelector(state => state.auth);
 
-    const logUserBackIn = async () => {
+    const logUserBackIn = useCallback(async () => {
         try {
             await dispatch(AuthActions.keepUserLoggedIn());
             setMount(true);
         }catch (error){
             setMount(true);
         }
-    }
+    }, [setMount]);
+
     useEffect(() => {
         if(!auth.loggedIn){ // Try logging user back in
             logUserBackIn();
@@ -31,9 +32,9 @@ function NotAuth({ component: Component, ...rest }) {
             render={props => 
                 mount ? (
                     auth.loggedIn ? (
-                        auth.data.role === '1' ? 
+                        auth.data.role === 1 ? 
                             <Redirect to="/admin" /> : 
-                        auth.data.role === '2' ? 
+                        auth.data.role === 2 ? 
                             <Redirect to="/user" /> :
                             <Redirect to="/login" />
                     ) : (

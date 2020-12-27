@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER } from '../actions/auth';
+import { LOGIN_USER, LOGOUT_USER, KEEP_USER_LOGGED_IN } from '../actions/auth';
 
 import User from '../../models/User';
 import * as LocalStore from '../../helpers/functions/localStore';
@@ -27,6 +27,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 data: userData,
+                loggedIn: true
+            }
+        case KEEP_USER_LOGGED_IN:
+            return {
+                data: action.data,
                 loggedIn: true
             }
         case LOGOUT_USER:
