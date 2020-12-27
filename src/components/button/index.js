@@ -1,23 +1,26 @@
-import PropTypes from 'prop-types';
 import './button.scss';
 
-const Button = ({
+export const Button = ({
     clickAction,
     text,
-    styles
+    styles,
+    type,
+    classnames,
+    icon,
+    disabled
 }) => {
 
     if(!text){
         return null
     }
+
+    // if(!disabled){
+    //     disabled = false;
+    // }
+
+    if(!type){
+        type = 'submit';
+    }
     
-    return <button style={{...styles}} data-test="buttonComponent" className="shopmate-btn" onClick={clickAction}>{text}</button>
+    return <button type={type} disabled={disabled} style={{...styles}} className={`quizza-btn ${classnames}`} onClick={clickAction}>{icon} <span>{text}</span></button>
 }
-
-Button.propTypes = {
-    text: PropTypes.string,
-    clickAction: PropTypes.func,
-    styles: PropTypes.object
-};
-
-export default Button;

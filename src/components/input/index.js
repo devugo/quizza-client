@@ -1,12 +1,8 @@
 // import PropTypes from 'prop-types';
 import './input.scss';
 
-export const Input = ({
-    type,
-    name,
-    styles,
-    placeholder
-}) => {
+export const Input = props => {
+    let { name, type, classnames } = props;
 
     if(!name){
         return null;
@@ -16,7 +12,7 @@ export const Input = ({
         type = 'text';
     }
     
-    return <input placeholder={placeholder} type={type} name={name} id={name} style={{...styles}} className="quzza-input" />
+    return <input {...props} type={type} className={`quzza-input ${classnames}`} />
 }
 
 // Input.propTypes = {

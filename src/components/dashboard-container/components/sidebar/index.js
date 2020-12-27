@@ -11,7 +11,7 @@ export const Sidebar = ({
         <nav className={`dashboard-sidebar${openSidebar ? ' open' : ''}`}>
             <div className="dashboard-sidebar__content">
                 <div className={`user-profile center${openSidebar ? ' open' : ''}`}>
-                    <img className="circular" src={ProfileImg} width="100" height="100" />
+                    <img className="circular" src={ProfileImg} width="100" height="100" alt="profile" />
                     <p>Ezenwankwo Ugochukwu</p>
                 </div>
                 <div className="nav">

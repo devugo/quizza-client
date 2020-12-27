@@ -1,9 +1,10 @@
-@import '../../scss/index';
+@import '../../scss/variables';
 
 .quizza-btn {
-    background-color: $primary-color;
+    // background-color: $primary-color;
+    // background-image: $primary-gradient;
     color: $white;
-    border-radius: 100px;
+    border-radius: 3px;
     width: 100px;
     border: 1px solid $primary-color;
     height: 30px;
@@ -11,6 +12,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
     @include transition-ease;
 
     &:focus{
@@ -19,6 +24,10 @@
     }
 
     &:hover {
-        background-color: #F15C7F;
+        // background-color: #F15C7F;
+    }
+
+    i {
+        margin-right: 10px
     }
 }

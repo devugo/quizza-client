@@ -25,8 +25,8 @@ export const Header = ({
         <nav className="dashboard-header">
             <div className="dashboard-header__content">
                 <div className="left logo">
-                    <img src={LogoText} width="100" height="40" /> 
-                    <img onClick={()=>setOpenSidebar(prevState => !prevState)} className="hamburger" src={Hamburger} /> 
+                    <img src={LogoText} width="100" height="40" alt="logo-text" /> 
+                    <img onClick={()=>setOpenSidebar(prevState => !prevState)} className="hamburger" alt="hamburger" src={Hamburger} /> 
                 </div>
 
                 <div className="right">
@@ -44,7 +44,7 @@ export const Header = ({
                         <FaIcon
                             text="caret-down"
                         />
-                        <img className="profile-img ml-1" src={ProfileImg} width="30" height="30" />
+                        <img className="profile-img ml-1" src={ProfileImg} width="30" height="30" alt="profile" />
                         <div className="name">
                             <p className="title">Admin</p>
                             <p className="fullname">Ezenwankwo Ugochukwu</p>
