@@ -11,6 +11,8 @@ export const AdminSidebar = ({
     const location = useLocation();
     const path = location.pathname;
 
+    console.log(path)
+
     return (
         
         <nav className={`dashboard-sidebar${openSidebar ? ' open' : ''}`}>
@@ -22,27 +24,33 @@ export const AdminSidebar = ({
                 <div className="nav">
                     <ul>
                         <li className="nav-link">
-                            <Link to="/admin/dashboard" className={`${path === '/admin' || path === 'admin/dashboard' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                            <Link to="/admin/dashboard" className={`${path === '/admin' || path === '/admin/dashboard' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
                                 <FaIcon text="home" /> 
                                 <span className="text">Dashboard</span>
                             </Link>
                         </li>
                         <li className="nav-link">
-                            <Link to="/admin/users" className={`${path === 'admin/users' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                            <Link to="/admin/users" className={`${path === '/admin/users' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
                                 <FaIcon text="user" /> 
                                 <span className="text">Users</span>
                             </Link>
                         </li>
                         <li className="nav-link">
-                            <Link to="/admin/levels" className={`${path === 'admin/levels' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                            <Link to="/admin/levels" className={`${path === '/admin/levels' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
                                 <FaIcon text="user" /> 
                                 <span className="text">Levels</span>
                             </Link>
                         </li>
                         <li className="nav-link">
-                            <Link to="/admin/quizes" className={`${path === 'admin/quizes' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                            <Link to="/admin/subjects" className={`${path === '/admin/subjects' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                                <FaIcon text="user" /> 
+                                <span className="text">Subjects</span>
+                            </Link>
+                        </li>
+                        <li className="nav-link">
+                            <Link to="/admin/quizes" className={`${path === '/admin/quizes' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
                                 <FaIcon text="book" /> 
-                                <span className="text">Users</span>
+                                <span className="text">Quizes</span>
                             </Link>
                         </li>
                         {/* <li><Link to="/admin/users" className={`${openSidebar ? ' open' : ''}`}><FaIcon text="user" /> <span className="text">Users</span></Link></li> */}
