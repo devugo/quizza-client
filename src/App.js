@@ -6,10 +6,13 @@ import { store } from './store';
 //  Middlewares
 import Auth from './middlewares/Auth';
 import NotAuth from './middlewares/NotAuth';
+import IsAdmin from './middlewares/IsAdmin';
+import IsUser from './middlewares/IsUser';
 
 //  Pages
 import Dashboard from './interfaces/admin/pages/dashboard';
 import Login from './interfaces/general/pages/login';
+import Page404 from './interfaces/general/pages/404';
 
 function App() {
   return (
@@ -20,12 +23,14 @@ function App() {
             <Route exact path="/" component={Dashboard} />
 
             {/* Admin Routes */}
-            <Auth exact path="/admin" component={Dashboard} />
-            <Auth exact path="/admin/dashboard" component={Dashboard} />
+            <IsAdmin exact path="/admin" component={Dashboard} />
+            <IsAdmin exact path="/admin/dashboard" component={Dashboard} />
 
-             {/* Admin Routes */}
-            <Auth exact path="/user" component={Dashboard} />
-            <Auth exact path="/user/dashboard" component={Dashboard} />
+             {/* User Routes */}
+            <IsUser exact path="/user" component={Dashboard} />
+            <IsUser exact path="/user/dashboard" component={Dashboard} />
+
+            <Page404 />
           </Switch>
         </Router>
     </Provider>

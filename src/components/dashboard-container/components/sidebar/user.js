@@ -3,7 +3,7 @@ import { FaIcon } from '../../../fa-icon';
 import ProfileImg from '../../../../images/default.png';
 import './sidebar.scss';
 
-export const Sidebar = ({
+export const UserSidebar = ({
     openSidebar,
     setOpenSidebar
 }) => {

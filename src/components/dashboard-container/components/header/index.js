@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
 
 import { Input } from '../../../input';
@@ -14,9 +14,9 @@ import { Message } from '../../../../components/message'
 import './header.scss';
 
 export const Header = ({
-    setOpenSidebar
+    setOpenSidebar,
+    auth
 }) => {
-    const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
     const [ dropdown, setDropdown ] = useState(false);

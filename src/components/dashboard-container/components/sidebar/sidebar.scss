@@ -5,6 +5,7 @@
     background-color: $white;
     // padding: 20px 0;
     overflow: hidden;
+    min-height: calc(100vh - 70px);
     @include transition-ease;
 
     &.open {
@@ -13,7 +14,7 @@
 
     &__content {
         .user-profile {
-            border-bottom: 2px solid $gray;
+            border-bottom: 2px solid $light-gray;
             padding: 10px 0;
             &.open {
                 padding: 20px;
@@ -44,7 +45,7 @@
                 list-style: none;;
                 
                 li {
-                    height: 60px;
+                    height: 80px;
                     
 
                     a {
