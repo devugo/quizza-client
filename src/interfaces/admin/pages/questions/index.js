@@ -1,11 +1,11 @@
 import DashboardContainer from '../../../../components/dashboard-container';
 
-const Subjects = () => {
+const Questions = () => {
     return (
         <DashboardContainer>
-            <div>Subjects</div>
+            <div>Questions</div>
         </DashboardContainer>
     )
 }
 
-export default Subjects;
+export default Questions;

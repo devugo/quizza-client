@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER, KEEP_USER_LOGGED_IN } from '../actions/auth';
+import { LOGIN_USER, LOGOUT_USER, KEEP_USER_LOGGED_IN, REGISTER_USER } from '../actions/auth';
 
 import User from '../../models/User';
 import * as LocalStore from '../../helpers/functions/localStore';
@@ -10,6 +10,25 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch(action.type){
+        case REGISTER_USER:
+            let newUserInfo = action.data.user;
+            let newToken = action.data.token;
+
+            const newUserData = new User(
+                newUserInfo.id,
+                newUserInfo.name,
+                newUserInfo.username,
+                newUserInfo.email, 
+                newUserInfo.role_id, 
+                newToken
+            );
+            LocalStore.add('QUIZZAUSER', JSON.stringify(newUserData));
+
+            return {
+                ...state,
+                data: newUserData,
+                loggedIn: true
+            }
         case LOGIN_USER:
             let userInfo = action.data.user;
             let token = action.data.token;

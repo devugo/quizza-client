@@ -5,7 +5,7 @@ import './sidebar.scss';
 
 export const UserSidebar = ({
     openSidebar,
-    setOpenSidebar
+    auth
 }) => {
     return (
         <nav className={`dashboard-sidebar${openSidebar ? ' open' : ''}`}>

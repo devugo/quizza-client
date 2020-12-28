@@ -30,7 +30,12 @@ const Login = () => {
             Message('success', 'Login successful', 5);
             // setLoader(false);
         }catch (error){
-            Message('error', error.response.data.error, 5);
+            let callError = CONSTANTS.ERRORDESC;
+
+            if(error.response.data && error.response.data.error){
+                callError = error.response.data.error;
+            }
+            Message('error', callError, 5);
             setLoader(false);
             // console.log(error.response);
             // console.log(error.message);
@@ -77,13 +82,11 @@ const Login = () => {
             await dispatch(AuthActions.verifyGoogleAuth(token, id));
             Message('success', 'Login successful', 5);
         }catch (error){
-            console.log(error.response);
             Message('warning', 'There wan an error verifying user', 5);
         }
     }, []);
 
     if(auth && auth.loggedIn){
-        console.log(auth)
         if(auth.data.role === 1){
             return <Redirect to='/admin' />
         }else if(auth.data.role === 2){
@@ -104,14 +107,14 @@ const Login = () => {
                     validate={values => {
                         const errors = {};
                         if (!values.email) {
-                            errors.email = 'Required';
+                            errors.email = 'Email is required';
                         } else if (
                             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                         ) {
-                            errors.email = 'Invalid email address';
+                            errors.email = 'Please, specify a valid email address';
                         }
                         if(!values.password){
-                            errors.password = 'Required';
+                            errors.password = 'Password is required';
                         }
                         return errors;
                     }}
@@ -155,7 +158,6 @@ const Login = () => {
                                 <small className="text-danger">{errors.password && touched.password && errors.password}</small>
                             </div>
                             <Button
-                                clickAction={()=>{}}
                                 text="SIGN IN"
                                 classnames="btn-gradient-primary"
                                 spin={loader}

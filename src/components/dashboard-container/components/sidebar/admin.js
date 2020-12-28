@@ -11,8 +11,6 @@ export const AdminSidebar = ({
     const location = useLocation();
     const path = location.pathname;
 
-    console.log(path)
-
     return (
         
         <nav className={`dashboard-sidebar${openSidebar ? ' open' : ''}`}>
@@ -45,6 +43,12 @@ export const AdminSidebar = ({
                             <Link to="/admin/subjects" className={`${path === '/admin/subjects' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
                                 <FaIcon text="user" /> 
                                 <span className="text">Subjects</span>
+                            </Link>
+                        </li>
+                        <li className="nav-link">
+                            <Link to="/admin/questions" className={`${path === '/admin/questions' ? 'active' : ''}${openSidebar ? ' open' : ''}`}>
+                                <FaIcon text="user" /> 
+                                <span className="text">Questions</span>
                             </Link>
                         </li>
                         <li className="nav-link">
